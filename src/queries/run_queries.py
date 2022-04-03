@@ -52,7 +52,8 @@ class QueryManager:
                         })
                     all_data_list += reddit_list
             except ThirdPartyAPIConnectionError as error:
-                self.response_data = error.response_data
+                # self.response_data = error.response_data
+                pass
 
         self.response_data += all_data_list
         return self.response_data
@@ -97,6 +98,6 @@ class QueryManager:
                     all_data_list += reddit_list
             except ThirdPartyAPIConnectionError as error:
                 pass
-                
+
         self.response_data += all_data_list
         return self.response_data
