@@ -17,7 +17,12 @@ class Response:
     status_code: int
     headers: dict[str, str] | None
 
-    def __init__(self, response_data: Any, status_code: int, headers: dict[str, str] | None = None):
+    def __init__(
+        self,
+        response_data: Any,
+        status_code: int,
+        headers: dict[str, str] | None = None,
+    ):
         """Set data."""
         self.response_data = response_data
         self.status_code = status_code
@@ -30,7 +35,12 @@ class RequestClient:
     _conn_timeout = 15
     _read_timeout = 45
 
-    def __init__(self, third_party: str, conn_timeout: int | None = None, read_timeout: int | None = None):
+    def __init__(
+        self,
+        third_party: str,
+        conn_timeout: int | None = None,
+        read_timeout: int | None = None,
+    ):
         """Third party name and timeout if set."""
         self.third_party = third_party
         self._conn_timeout = conn_timeout if conn_timeout else self._conn_timeout
@@ -46,7 +56,7 @@ class RequestClient:
         params: dict[str, str] | None = None,
         post_data: dict[str, Any] | None = None,
         sensitive_request_data: dict[str, Any] | None = None,
-        verify: bool = True
+        verify: bool = True,
     ) -> Response:
         """
         Perform request to third party endpoints.
@@ -87,5 +97,5 @@ class RequestClient:
         except RequestException as request_error:
             raise ThirdPartyAPIConnectionError(
                 response_code=request_error.response.status_code if request_error.response else 0,
-                response_data={'message': str(request_error)},
+                response_data={"message": str(request_error)},
             ) from request_error

@@ -1,6 +1,6 @@
 from fastapi.testclient import TestClient
-from main import app
 
+from main import app
 
 client = TestClient(app)
 
@@ -22,5 +22,4 @@ def test_list_news_required_fields():
     for obj in response.json():
         if any(field not in obj.keys() for field in ["title", "link", "source"]):
             objects_with_missing_fields.append(obj)
-    assert len(objects_with_missing_fields) == 0 
-
+    assert len(objects_with_missing_fields) == 0

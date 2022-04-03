@@ -8,4 +8,4 @@ class ThirdPartyAPIConnectionError(Exception):
         """Set response code and response data."""
         self.response_code = response_code
         self.response_data = response_data
-        super().__init__('ThirdPartyAPIConnectionError')
+        super().__init__("ThirdPartyAPIConnectionError")

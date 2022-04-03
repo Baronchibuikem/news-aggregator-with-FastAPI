@@ -75,6 +75,22 @@ pytest
 2. Prepare API Mapping object
 3. Navigate to `src/queries/run_queries` and add the query for the new api
 
+##### Utility commands
+
+1. To sort your imports
+
+```sh
+isort src
+isort test
+```
+
+2. To formst your code
+
+```sh
+black src
+black tests
+```
+
 <!-- CONTACT -->
 
 ## Contact

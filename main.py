@@ -1,6 +1,8 @@
-from fastapi import FastAPI, HTTPException
-from src.queries.run_queries import QueryManager
 from typing import Optional
+
+from fastapi import FastAPI, HTTPException
+
+from src.queries.run_queries import QueryManager
 
 app = FastAPI()
 
