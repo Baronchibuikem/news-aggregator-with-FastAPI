@@ -37,7 +37,7 @@ class QueryManager:
                 )
 
                 # if the source of data is new_api and response is not false
-                if EXTERNAL_SOURCES_CONFIG[api_sources]["source"] == "news_api" and response:
+                if EXTERNAL_SOURCES_CONFIG[api_sources]["source"] == "newsapi" and response:
                     for data in response.response_data["articles"]:
                         news_api_list.append(
                             {

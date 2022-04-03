@@ -13,7 +13,7 @@ REDDIT_API_CONFIG = 2
 EXTERNAL_SOURCES_CONFIG: Dict[int, Dict[str, Any]] = {
     NEWS_API_CONFIG: {
         "api_name": "newsapi",
-        "source": "news_api",
+        "source": "newsapi",
         "listing_url": "http://newsapi.org/v2/top-headlines?category=general&pageSize={limit}&page=1",
         "search_url": "http://newsapi.org/v2/everything?q='{query}'&pageSize='{limit}'&page=1",
         "access_key": os.getenv("NEWS_API_KEY"),
