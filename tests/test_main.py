@@ -20,7 +20,6 @@ def test_list_news_required_fields():
     response = client.get("/news")
     objects_with_missing_fields = []
     for obj in response.json():
-        print(obj.keys())
         if any(field not in obj.keys() for field in ["title", "link", "source"]):
             objects_with_missing_fields.append(obj)
     assert len(objects_with_missing_fields) == 0 
