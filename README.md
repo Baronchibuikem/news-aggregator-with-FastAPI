@@ -1,7 +1,5 @@
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](#about-the-project)
-
 The application is built in accordance with <a href="https://github.com/meddyco/Backend-Assignment">Problem Statement</a> document. All of the features are implemented. All the contraints are implemented, along with project documentation and unit-tests.
 
 <br>
