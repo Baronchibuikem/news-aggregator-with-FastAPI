@@ -4,7 +4,7 @@ from dotenv import load_dotenv, find_dotenv
 from typing import Optional, Any
 from src.utils.external_api_call import RequestClient
 from src.utils.external_libs_config import EXTERNAL_SOURCES_CONFIG, API_COLLECTION
-
+from src.utils.exceptions import ThirdPartyAPIConnectionError
 
 class QueryManager:
     def __init__(self, query: Optional[str] = None, limit: int = 10) -> None:
@@ -16,7 +16,7 @@ class QueryManager:
         self.news_api_key: str = os.getenv("NEWS_API_KEY")
 
     def search_news_query(self):
-        """For fetching list of data from any Reddit and News_Api endpoints"""
+        """function to get search results for a given QUERY from all registered APIs (in API_COLLECTION)."""
         all_data_list: list = []
         reddit_list = []
         news_api_list = []
@@ -96,7 +96,7 @@ class QueryManager:
                         })
                     all_data_list += reddit_list
             except ThirdPartyAPIConnectionError as error:
-                self.response_data = error.response_data
-
+                pass
+                
         self.response_data += all_data_list
         return self.response_data
