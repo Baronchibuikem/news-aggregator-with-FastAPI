@@ -15,9 +15,9 @@ class Response:
 
     response_data: Any
     status_code: int
-    headers: MutableMapping[str, str] | None
+    headers: dict[str, str] | None
 
-    def __init__(self, response_data: Any, status_code: int, headers: MutableMapping[str, str] | None = None):
+    def __init__(self, response_data: Any, status_code: int, headers: dict[str, str] | None = None):
         """Set data."""
         self.response_data = response_data
         self.status_code = status_code
@@ -42,8 +42,8 @@ class RequestClient:
         *,
         method: str,
         url: str,
-        headers: MutableMapping[str, str] | None,
-        params: MutableMapping[str, str] | None = None,
+        headers: dict[str, str] | None,
+        params: dict[str, str] | None = None,
         post_data: dict[str, Any] | None = None,
         sensitive_request_data: dict[str, Any] | None = None,
         verify: bool = True
