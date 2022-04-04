@@ -49,10 +49,10 @@ source env/bin/activate
 pip3 install -r requirements.txt
 ```
 
-6. Create your configurations file `.env` and add the code below.
+6. Create your configurations file `.env` and add your news api key.
 
 ```sh
-NEWS_API_KEY = '547bb651f65d4e0bb202f468c1e96a07'
+NEWS_API_KEY = 'add your key here'
 ```
 
 4. Run server
