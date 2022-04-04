@@ -36,8 +36,8 @@ class QueryManager:
                     },
                 )
 
-                # if the source of data is new_api and response is not false
-                if EXTERNAL_SOURCES_CONFIG[api_sources]["source"] == "newsapi" and response:
+                # if the source of data is new_api and response.response_data["articles"] is not None
+                if EXTERNAL_SOURCES_CONFIG[api_sources]["source"] == "newsapi" and response.response_data["articles"] is not None:
                     for data in response.response_data["articles"]:
                         news_api_list.append(
                             {
@@ -48,8 +48,8 @@ class QueryManager:
                         )
                     all_data_list += news_api_list
 
-                # since we are only fetching from 2 third-parties libraries, this runs if the source of data wasn't news_api
-                else:
+                # if the source of data is reddit esponse.response_data["data"]["children"] is not None
+                elif EXTERNAL_SOURCES_CONFIG[api_sources]["source"] == "reddit" and response.response_data["data"]["children"]is not None:
                     for data in response.response_data["data"]["children"]:
                         reddit_list.append(
                             {
@@ -59,6 +59,8 @@ class QueryManager:
                             }
                         )
                     all_data_list += reddit_list
+                else:
+                    all_data_list = []
             except ThirdPartyAPIConnectionError as error:
                 # self.response_data = error.response_data
                 pass
@@ -85,8 +87,8 @@ class QueryManager:
                     },
                 )
 
-                # if the source of data is new_api and response is not false
-                if EXTERNAL_SOURCES_CONFIG[api_sources]["source"] == "news_api" and response:
+                # if the source of data is new_api and response is not None
+                if EXTERNAL_SOURCES_CONFIG[api_sources]["source"] == "newsapi" and response.response_data["articles"] is not None:
                     for data in response.response_data["articles"]:
                         news_api_list.append(
                             {
@@ -97,8 +99,8 @@ class QueryManager:
                         )
                     all_data_list += news_api_list
 
-                # since we are only fetching from 2 third-parties libraries, this runs if the source of data wasn't news_api
-                else:
+                # if the source of data is reddit esponse.response_data["data"]["children"] is not None
+                elif EXTERNAL_SOURCES_CONFIG[api_sources]["source"] == "reddit" and response.response_data["data"]["children"] is not None:
                     for data in response.response_data["data"]["children"]:
                         reddit_list.append(
                             {
@@ -108,6 +110,8 @@ class QueryManager:
                             }
                         )
                     all_data_list += reddit_list
+                else:
+                    all_data_list = []
             except ThirdPartyAPIConnectionError as error:
                 pass
 
