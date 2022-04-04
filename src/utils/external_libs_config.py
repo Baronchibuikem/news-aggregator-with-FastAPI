@@ -22,7 +22,9 @@ EXTERNAL_SOURCES_CONFIG: Dict[int, Dict[str, Any]] = {
         "api_name": "reddit",
         "source": "reddit",
         "listing_url": ("https://www.reddit.com/r/news/top.json?" "limit={limit}"),
-        "search_url": "https://www.reddit.com/r/news/search.json?" "q={query}&" "limit={limit}",
+        "search_url": "https://www.reddit.com/r/news/search.json?"
+        "q={query}&"
+        "limit={limit}",
         "access_key": "",
     },
 }

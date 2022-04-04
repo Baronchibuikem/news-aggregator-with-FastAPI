@@ -40,12 +40,12 @@ def test_get_news_query_new_api_success():
         {
             "title": "6 people are dead and at least 9 others are wounded after a shooting in downtown Sacramento - CNN",
             "link": "https://www.cnn.com/2022/04/03/us/sacramento-california-shooting/index.html",
-            "source": "news_api",
+            "source": "newsapi",
         },
         {
             "title": "Imran Khan Live Updates: Pakistan Parliament News and the Latest - The New York Times",
             "link": "https://www.nytimes.com/live/2022/04/03/world/imran-khan-confidence-vote-pakistan",
-            "source": "news_api",
+            "source": "newsapi",
         },
     ]
 
@@ -257,7 +257,7 @@ def test_search_news_query_new_api_success():
         {
             "title": "6 people are dead and at least 9 others are wounded after a shooting in downtown Sacramento - CNN",
             "link": "https://www.cnn.com/2022/04/03/us/sacramento-california-shooting/index.html",
-            "source": "news_api",
+            "source": "newsapi",
         }
     ]
 
@@ -312,7 +312,7 @@ def test_search_news_query_new_api_failure():
         {
             "title": "6 people are dead and at least 9 others are wounded after a shooting in downtown Sacramento - CNN",
             "link": "https://www.cnn.com/2022/04/03/us/sacramento-california-shooting/index.html",
-            "source": "news_api",
+            "source": "newsapi",
         }
     ]
 

@@ -16,8 +16,9 @@ class QueryManager:
         self.response_data: list = []
         self.response_status: bool = False
         self.news_api_key: str = os.getenv("NEWS_API_KEY")
+        self.error = None
 
-    def search_news_query(self):
+    def search_news_query(self) -> list[dict[str, Any]]:
         """function to get search results for a given QUERY from all registered APIs (in API_COLLECTION)."""
         all_data_list: list = []
         reddit_list = []
@@ -28,7 +29,9 @@ class QueryManager:
                 request_client = RequestClient("NewsList")
                 response = request_client.request(
                     method="get",
-                    url=EXTERNAL_SOURCES_CONFIG[api_sources]["search_url"].format(query=self.query, limit=self.limit),
+                    url=EXTERNAL_SOURCES_CONFIG[api_sources]["search_url"].format(
+                        query=self.query, limit=self.limit
+                    ),
                     headers={
                         "x-api-key": EXTERNAL_SOURCES_CONFIG[api_sources]["access_key"],
                         "Content-Type": "application/json",
@@ -37,32 +40,42 @@ class QueryManager:
                 )
 
                 # if the source of data is new_api and response.response_data["articles"] is not None
-                if EXTERNAL_SOURCES_CONFIG[api_sources]["source"] == "newsapi" and response.response_data["articles"] is not None:
+                if (
+                    EXTERNAL_SOURCES_CONFIG[api_sources]["source"] == "newsapi"
+                    and response.response_data["articles"] is not None
+                ):
                     for data in response.response_data["articles"]:
                         news_api_list.append(
                             {
                                 "title": data["title"],
                                 "link": data["url"],
-                                "source": EXTERNAL_SOURCES_CONFIG[api_sources]["source"],
+                                "source": EXTERNAL_SOURCES_CONFIG[api_sources][
+                                    "source"
+                                ],
                             }
                         )
                     all_data_list += news_api_list
 
                 # if the source of data is reddit esponse.response_data["data"]["children"] is not None
-                elif EXTERNAL_SOURCES_CONFIG[api_sources]["source"] == "reddit" and response.response_data["data"]["children"]is not None:
+                elif (
+                    EXTERNAL_SOURCES_CONFIG[api_sources]["source"] == "reddit"
+                    and response.response_data["data"]["children"] is not None
+                ):
                     for data in response.response_data["data"]["children"]:
                         reddit_list.append(
                             {
                                 "title": data["data"]["title"],
                                 "link": data["data"]["url"],
-                                "source": EXTERNAL_SOURCES_CONFIG[api_sources]["source"],
+                                "source": EXTERNAL_SOURCES_CONFIG[api_sources][
+                                    "source"
+                                ],
                             }
                         )
                     all_data_list += reddit_list
                 else:
                     all_data_list = []
             except ThirdPartyAPIConnectionError as error:
-                # self.response_data = error.response_data
+                # return error.response_data
                 pass
 
         self.response_data += all_data_list
@@ -79,7 +92,9 @@ class QueryManager:
                 request_client = RequestClient("NewsList")
                 response = request_client.request(
                     method="get",
-                    url=EXTERNAL_SOURCES_CONFIG[api_sources]["listing_url"].format(limit=self.limit),
+                    url=EXTERNAL_SOURCES_CONFIG[api_sources]["listing_url"].format(
+                        limit=self.limit
+                    ),
                     headers={
                         "x-api-key": EXTERNAL_SOURCES_CONFIG[api_sources]["access_key"],
                         "Content-Type": "application/json",
@@ -88,31 +103,42 @@ class QueryManager:
                 )
 
                 # if the source of data is new_api and response is not None
-                if EXTERNAL_SOURCES_CONFIG[api_sources]["source"] == "newsapi" and response.response_data["articles"] is not None:
+                if (
+                    EXTERNAL_SOURCES_CONFIG[api_sources]["source"] == "newsapi"
+                    and response.response_data["articles"] is not None
+                ):
                     for data in response.response_data["articles"]:
                         news_api_list.append(
                             {
                                 "title": data["title"],
                                 "link": data["url"],
-                                "source": EXTERNAL_SOURCES_CONFIG[api_sources]["source"],
+                                "source": EXTERNAL_SOURCES_CONFIG[api_sources][
+                                    "source"
+                                ],
                             }
                         )
                     all_data_list += news_api_list
 
                 # if the source of data is reddit esponse.response_data["data"]["children"] is not None
-                elif EXTERNAL_SOURCES_CONFIG[api_sources]["source"] == "reddit" and response.response_data["data"]["children"] is not None:
+                elif (
+                    EXTERNAL_SOURCES_CONFIG[api_sources]["source"] == "reddit"
+                    and response.response_data["data"]["children"] is not None
+                ):
                     for data in response.response_data["data"]["children"]:
                         reddit_list.append(
                             {
                                 "title": data["data"]["title"],
                                 "link": data["data"]["url"],
-                                "source": EXTERNAL_SOURCES_CONFIG[api_sources]["source"],
+                                "source": EXTERNAL_SOURCES_CONFIG[api_sources][
+                                    "source"
+                                ],
                             }
                         )
                     all_data_list += reddit_list
                 else:
                     all_data_list = []
             except ThirdPartyAPIConnectionError as error:
+                # return error.response_data
                 pass
 
         self.response_data += all_data_list

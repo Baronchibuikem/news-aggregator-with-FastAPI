@@ -93,9 +93,13 @@ class RequestClient:
             except json.JSONDecodeError:
                 response_data = {}
 
-            return Response(response_data=response_data, headers=headers, status_code=status_code)
+            return Response(
+                response_data=response_data, headers=headers, status_code=status_code
+            )
         except RequestException as request_error:
             raise ThirdPartyAPIConnectionError(
-                response_code=request_error.response.status_code if request_error.response else 0,
+                response_code=request_error.response.status_code
+                if request_error.response
+                else 0,
                 response_data={"message": str(request_error)},
             ) from request_error
