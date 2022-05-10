@@ -8,6 +8,11 @@ from src.queries.run_queries import QueryManager
 app = FastAPI()
 
 
+@app.get("/")
+async def root():
+    return {"message": "Hello World"}
+
+
 @app.get('/news')
 def list_news(q: Optional[str] = None, limit: int = 10):
     """
@@ -29,8 +34,5 @@ def list_news(q: Optional[str] = None, limit: int = 10):
     except:
         raise HTTPException(400, "something went wrong/ Bad request")
 
-@app.get("/")
-async def root():
-    return {"message": "Hello World"}
 
-handler = Mangum(app=app)
+handler = Mangum(app, lifespan="off")
