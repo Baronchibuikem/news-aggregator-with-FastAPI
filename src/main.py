@@ -8,7 +8,7 @@ from src.queries.run_queries import QueryManager
 app = FastAPI()
 
 
-@app.get('/')
+@app.get('/news')
 def list_news(q: Optional[str] = None, limit: int = 10):
     """
     This endpoint will serve for both getting the news listings and search functionality.
@@ -29,5 +29,10 @@ def list_news(q: Optional[str] = None, limit: int = 10):
     except:
         raise HTTPException(400, "something went wrong/ Bad request")
 
+@app.get("/")
+async def root():
+    return {"message": "Hello World"}
+
+handler = Mangum(app=app)
 
 handler = Mangum(app=app)
