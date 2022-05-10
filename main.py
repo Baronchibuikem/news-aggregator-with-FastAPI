@@ -8,7 +8,7 @@ from src.queries.run_queries import QueryManager
 app = FastAPI()
 
 
-@app.get('/news')
+@app.get('/')
 def list_news(q: Optional[str] = None, limit: int = 10):
     """
     This endpoint will serve for both getting the news listings and search functionality.
