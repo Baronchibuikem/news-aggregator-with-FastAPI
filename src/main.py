@@ -34,5 +34,3 @@ async def root():
     return {"message": "Hello World"}
 
 handler = Mangum(app=app)
-
-handler = Mangum(app=app)
