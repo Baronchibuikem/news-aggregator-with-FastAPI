@@ -1,10 +1,12 @@
 from typing import Optional
+from mangum import Mangum
 
 from fastapi import FastAPI, HTTPException
 
 from src.queries.run_queries import QueryManager
 
 app = FastAPI()
+
 
 @app.get('/news')
 def list_news(q: Optional[str] = None, limit: int = 10):
@@ -25,5 +27,7 @@ def list_news(q: Optional[str] = None, limit: int = 10):
             result = manager.get_news_query()
         return result
     except:
-        raise HTTPException(400, "something went wrong/ Bad request")  
+        raise HTTPException(400, "something went wrong/ Bad request")
 
+
+handler = Mangum(app=app)
