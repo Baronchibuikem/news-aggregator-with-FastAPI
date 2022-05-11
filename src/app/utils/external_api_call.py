@@ -7,7 +7,7 @@ from typing import Any
 import requests
 from requests import RequestException
 
-from src.utils.exceptions import ThirdPartyAPIConnectionError
+from src.app.utils.exceptions import ThirdPartyAPIConnectionError
 
 
 class Response:

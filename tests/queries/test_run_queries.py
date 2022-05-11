@@ -1,7 +1,7 @@
 import responses
 
-from src.queries.run_queries import QueryManager
-from src.utils.external_libs_config import (
+from src.app.queries.run_queries import QueryManager
+from src.app.utils.external_libs_config import (
     API_COLLECTION,
     EXTERNAL_SOURCES_CONFIG,
     NEWS_API_CONFIG,

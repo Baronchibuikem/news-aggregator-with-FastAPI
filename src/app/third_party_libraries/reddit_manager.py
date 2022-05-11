@@ -1,4 +1,4 @@
-from src.utils.external_libs_config import EXTERNAL_SOURCES_CONFIG
+from src.app.utils.external_libs_config import EXTERNAL_SOURCES_CONFIG
 
 class RedditManager:
     def __init__(self):

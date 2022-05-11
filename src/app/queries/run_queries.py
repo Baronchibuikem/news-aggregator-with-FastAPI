@@ -3,9 +3,9 @@ from typing import Any, Optional, List, Dict
 
 from dotenv import find_dotenv, load_dotenv
 
-from src.utils.exceptions import ThirdPartyAPIConnectionError
-from src.utils.external_api_call import RequestClient
-from src.utils.external_libs_config import API_COLLECTION, EXTERNAL_SOURCES_CONFIG
+from src.app.utils.exceptions import ThirdPartyAPIConnectionError
+from src.app.utils.external_api_call import RequestClient
+from src.app.utils.external_libs_config import API_COLLECTION, EXTERNAL_SOURCES_CONFIG
 
 
 class QueryManager:
