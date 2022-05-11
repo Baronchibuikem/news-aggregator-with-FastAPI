@@ -3,7 +3,7 @@ from mangum import Mangum
 
 from fastapi import FastAPI, HTTPException
 
-from src.app.queries.run_queries import QueryManager
+from .queries.run_queries import QueryManager
 
 app = FastAPI()
 
